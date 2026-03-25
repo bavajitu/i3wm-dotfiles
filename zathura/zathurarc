@@ -1,0 +1,71 @@
+set selection-clipboard clipboard
+
+
+# Remove visual distractions
+
+set statusbar-h-padding 5
+set statusbar-v-padding 5
+
+# Navigation (Vim-like)
+map j scroll down
+map <C-h> feedkeys "a h"
+map k scroll up
+map h scroll left
+map l scroll right
+map gg navigate top
+map G navigate bottom
+map u scroll half-up
+map d scroll half-down
+
+# Smooth Scrolling
+set smooth-scroll true
+
+set adjust-open "width"
+
+# Page Layout (Dual-Pane Mode)
+set pages-per-row 1
+set page-padding 5
+set recolor false # Set to true for night mode
+
+# Mouse Scroll Speed (Fine-tuned)
+set scroll-step 50
+set zoom-step 10
+
+# Keybinds for Fast Navigation
+map + zoom in
+map - zoom out
+map space scroll half-down
+map b scroll half-up
+map i toggle_index
+
+
+# Fit Document to Width by Default
+set zoom-min 0.5
+set zoom-max 900
+
+# Show Page Number in Status Bar
+set statusbar-home-tilde true
+set statusbar-basename true
+
+set recolor true
+set recolor-lightcolor "#2E3440"
+set recolor-darkcolor "#D8DEE9"
+
+set scroll-bar true
+
+set adjust-open "best-fit"
+set page-padding 0
+set recolor "true"
+set recolor-keephue "true"
+set font "FiraMono Nerd Font 11"
+
+set default-fallback-font "FiraMono Nerd Font 11"
+
+set selection-clipboard "clipboard"
+set enable-hyphenation "true"
+set use-less-memory "false"
+
+set synctex true
+set synctex-editor-command "nvim --headless -c 'VimtexInverseSearch %l %f'"
+
+include mono

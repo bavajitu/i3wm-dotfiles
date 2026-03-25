@@ -1,0 +1,39 @@
+set default-fg                rgba(201,223,231,1)   # Misty cyan-white
+set default-bg                rgba(13,27,30,1)      # Deep forest shadow
+
+set completion-bg             rgba(13,27,30,1)
+set completion-fg             rgba(201,223,231,1)
+set completion-highlight-bg   rgba(28,43,47,1)      # Dark teal highlight
+set completion-highlight-fg   rgba(201,223,231,1)
+set completion-group-bg       rgba(13,27,30,1)
+set completion-group-fg       rgba(92,145,192,1)    # Soft misty blue
+
+set statusbar-fg              rgba(201,223,231,1)
+set statusbar-bg              rgba(13,27,30,1)
+
+set notification-bg           rgba(13,27,30,1)
+set notification-fg           rgba(201,223,231,1)
+set notification-error-bg     rgba(13,27,30,1)
+set notification-error-fg     rgba(217,107,107,1)   # Red mist glow
+set notification-warning-bg   rgba(13,27,30,1)
+set notification-warning-fg   rgba(226,215,144,1)   # Muted pale yellow
+
+set inputbar-fg               rgba(201,223,231,1)
+set inputbar-bg               rgba(26,42,46,1)      # Slightly lifted teal
+
+set recolor                   "true"
+set recolor-lightcolor        rgba(13,27,30,1)      # Background
+set recolor-darkcolor         rgba(201,223,231,1)   # Text
+
+set index-fg                  rgba(201,223,231,1)
+set index-bg                  rgba(13,27,30,1)
+set index-active-fg           rgba(201,223,231,1)
+set index-active-bg           rgba(28,43,47,1)
+
+set render-loading-bg         rgba(13,27,30,1)
+set render-loading-fg         rgba(201,223,231,1)
+
+set highlight-color           rgba(92,145,192,0.4)  # Misty blue
+set highlight-fg              rgba(140,190,190,0.5) # Soft cyan
+set highlight-active-color    rgba(140,190,190,0.5)
+

@@ -1,0 +1,37 @@
+set default-bg            "#1a1b26"  # Dark background (Tokyo Night)
+set statusbar-bg          "#1a1b26"  # Same as background
+set statusbar-fg          "#c0caf5"  # Light blue text (Tokyo Night)
+set inputbar-bg           "#1a1b26"  # Input bar background
+set inputbar-fg           "#c0caf5"  # Input text color
+set completion-bg         "#1a1b26"  # Completion menu background
+set completion-fg         "#c0caf5"  # Completion menu text
+set completion-highlight-bg "#3b4261" # Highlighted item in completion menu
+set completion-highlight-fg "#bb9af7" # Light purple highlight text
+set notification-bg       "#1a1b26"  # Notification background
+set notification-fg       "#7dcfff"  # Blue notification text
+set highlight-color       "#bb9af7"  # Highlighted search result color
+set highlight-active-color "#ff9e64" # Active search result highlight (warm orange)
+set recolor-lightcolor    "#c0caf5"  # Light mode text color (if recoloring)
+set recolor-darkcolor     "#1a1b26"  # Dark mode background (if recoloring)
+set index-bg             "#1a1b26"  # Index page background
+set index-fg             "#c0caf5"  # Index page text
+set index-active-bg      "#3b4261"  # Active index entry background
+set index-active-fg      "#bb9af7"  # Active index text color
+set render-loading       true       # Show loading indicator
+set zoom-step 0.10
+
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+map u scroll half-scroll
+map d scroll half-down
+map D toggle_page_mode
+map r reload
+map R rotate
+map K zoom in
+map J zoom out
+map 1 recolor
+set recolor
+map p print
+set page-padding 10
+
+

@@ -1,0 +1,41 @@
+# Rose Pine Moon Color Scheme
+# Universal background: #070E15
+
+set default-bg                 rgba(7,14,21,1)
+set default-fg                 rgba(224,222,244,1)    # Text
+
+set completion-bg              rgba(7,14,21,1)
+set completion-fg              rgba(224,222,244,1)
+set completion-highlight-bg    rgba(41,49,69,1)       # Highlight bg - rose pine moon overlay
+set completion-highlight-fg    rgba(224,222,244,1)
+set completion-group-bg        rgba(7,14,21,1)
+set completion-group-fg        rgba(144,140,170,1)    # Muted text
+
+set statusbar-bg               rgba(7,14,21,1)
+set statusbar-fg               rgba(224,222,244,1)
+
+set notification-bg            rgba(7,14,21,1)
+set notification-fg            rgba(224,222,244,1)
+set notification-error-bg      rgba(7,14,21,1)
+set notification-error-fg      rgba(235,111,146,1)   # Rose pine moon love
+set notification-warning-bg    rgba(7,14,21,1)
+set notification-warning-fg    rgba(246,193,119,1)   # Rose pine moon gold
+
+set inputbar-bg                rgba(7,14,21,1)
+set inputbar-fg                rgba(224,222,244,1)
+
+set recolor                    "true"
+set recolor-lightcolor         rgba(7,14,21,1)
+set recolor-darkcolor          rgba(224,222,244,1)
+
+set index-bg                   rgba(7,14,21,1)
+set index-fg                   rgba(224,222,244,1)
+set index-active-bg            rgba(41,49,69,1)      # Active index - rose pine moon overlay
+set index-active-fg            rgba(224,222,244,1)
+
+set render-loading-bg          rgba(7,14,21,1)
+set render-loading-fg          rgba(224,222,244,1)
+
+set highlight-color            rgba(246,193,119,0.35) # Gold with transparency
+set highlight-fg               rgba(7,14,21,0.9)     # Dark text on highlight
+set highlight-active-color     rgba(235,188,186,0.45) # Rose pine moon rose with transparency
