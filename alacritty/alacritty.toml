@@ -7,82 +7,58 @@ history = 10000
 
 # Font settings
 [font]
-size = 11
+size = 10.5
 [font.bold]
 # family = "Mononoki Nerd Font"
-family = "Hack Nerd Font"
+family = "Liberation Mono"
 style = "Bold"
 
 [font.italic]
 # family = "Mononoki Nerd Font"
-family = "Hack Nerd Font" 
+family = "Liberation Mono" 
 style = "Italic"
 
 [font.normal]
 # family = "Mononoki Nerd Font" 
-family = "Hack Nerd Font"
+family = "Liberation Mono"
 style = "Regular"
 
 # Window settings
 [window]
 decorations = "full"
-opacity = 0.9
+opacity = 0.95
 padding = { x = 4, y = 4}
 
 # ~/.config/alacritty/alacritty.toml
 
 [colors.primary]
 background = "#000000"
-foreground = "#c5c9c5"
+foreground = "#d4be98"
 
-[colors.normal]
-black   = "#0d0c0c"
-red     = "#c4746e"
-green   = "#8a9a7b"
-yellow  = "#c4b28a"
-blue    = "#8ba4b0"
-magenta = "#a292a3"
-cyan    = "#8ea4a2"
-white   = "#c8c093"
-
-[colors.bright]
-black   = "#a6a69c"
-red     = "#e46876"
-green   = "#87a987"
-yellow  = "#e6c384"
-blue    = "#7fb4ca"
-magenta = "#938aa9"
-cyan    = "#7aa89f"
-white   = "#c5c9c5"
-
-[colors.selection]
-text = "#c5c9c5"
-background = "#2d4f67"
-
-[colors.cursor]
-text = "#181616"
-cursor = "#c8c093"
-
-[colors.vi_mode_cursor]
-text = "#181616"
-cursor = "#c8c093"
-
-[colors.search.matches]
-foreground = "#181616"
-background = "#c5c9c5"
-
-[colors.search.focused_match]
-foreground = "#181616"
-background = "#e6c384"
-
-[colors.hints.start]
-foreground = "#181616"
-background = "#c4b28a"
-
-[colors.hints.end]
-foreground = "#181616"
-background = "#a292a3"
-
-[colors.footer_bar]
-foreground = "#c5c9c5"
-background = "#0d0c0c"
+# [colors.normal]
+# black   = "#111111"
+# red     = "#ea6962"
+# green   = "#a9b665"
+# yellow  = "#d8a657"
+# blue    = "#7daea3"
+# magenta = "#d3869b"
+# cyan    = "#89b482"
+# white   = "#d4be98"
+#
+# [colors.bright]
+# black   = "#504945"
+# red     = "#ea6962"
+# green   = "#a9b665"
+# yellow  = "#d8a657"
+# blue    = "#7daea3"
+# magenta = "#d3869b"
+# cyan    = "#89b482"
+# white   = "#ebdbb2"
+#
+# [colors.selection]
+# text = "#d4be98"
+# background = "#3c3836"
+#
+# [colors.cursor]
+# text = "#1d2021"
+# cursor = "#d4be98"

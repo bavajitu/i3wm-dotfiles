@@ -1,71 +1,60 @@
-set selection-clipboard clipboard
+# Clipboard
+set selection-clipboard "clipboard"
 
-
-# Remove visual distractions
-
+# UI minimalism
 set statusbar-h-padding 5
 set statusbar-v-padding 5
+set scroll-bar true
 
-# Navigation (Vim-like)
+# Navigation (controlled, no large jumps)
 map j scroll down
-map <C-h> feedkeys "a h"
 map k scroll up
 map h scroll left
 map l scroll right
-map gg navigate top
+map d scroll 20
+map u scroll -20
+map g navigate top
 map G navigate bottom
-map u scroll half-up
-map d scroll half-down
-
-# Smooth Scrolling
-set smooth-scroll true
-
-set adjust-open "width"
-
-# Page Layout (Dual-Pane Mode)
-set pages-per-row 1
-set page-padding 5
-set recolor false # Set to true for night mode
-
-# Mouse Scroll Speed (Fine-tuned)
-set scroll-step 50
-set zoom-step 10
-
-# Keybinds for Fast Navigation
-map + zoom in
-map - zoom out
-map space scroll half-down
-map b scroll half-up
 map i toggle_index
 
+# Remove problematic key
+# map <C-h> feedkeys "a h"   # unnecessary, causes input overhead
 
-# Fit Document to Width by Default
+# Rendering behavior
+set smooth-scroll false
+set scroll-step 30
+set zoom-step 10
+
+# Layout
+set pages-per-row 1
+set page-padding 0
+set adjust-open "best-fit"
+
+# Zoom bounds
 set zoom-min 0.5
 set zoom-max 900
 
-# Show Page Number in Status Bar
+# Status info
 set statusbar-home-tilde true
 set statusbar-basename true
 
-set recolor true
+# Performance-critical: disable recolor
+set recolor false
+set recolor-keephue true
 set recolor-lightcolor "#2E3440"
 set recolor-darkcolor "#D8DEE9"
 
-set scroll-bar true
+# Fonts
+set font "IBM Plex Mono 11"
+set default-fallback-font "IBM Plex Mono 11"
 
-set adjust-open "best-fit"
-set page-padding 0
-set recolor "true"
-set recolor-keephue "true"
-set font "FiraMono Nerd Font 11"
+# Memory + text
+set use-less-memory false
+set enable-hyphenation true
 
-set default-fallback-font "FiraMono Nerd Font 11"
-
-set selection-clipboard "clipboard"
-set enable-hyphenation "true"
-set use-less-memory "false"
-
+# SyncTeX
 set synctex true
 set synctex-editor-command "nvim --headless -c 'VimtexInverseSearch %l %f'"
 
-include mono
+# External theme
+include plain-black 
