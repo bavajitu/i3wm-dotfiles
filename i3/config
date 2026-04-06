@@ -1,7 +1,6 @@
 set $mod Mod4
-font pango:JetBrains Mono Nerd Font  9.5
+font pango:Liberation Mono 9.5
 exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 set $refresh_i3status killall -SIGUSR1 i3status
 
@@ -19,10 +18,8 @@ bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
 bindsym XF86MonBrightnessUp exec brightnessctl s 10%+
 
 # Applications shortcuts:
-bindsym $mod+Shift+d exec kclock
-bindsym $mod+Shift+Return exec zen-browser 
+bindsym $mod+Shift+Return exec librewolf 
 bindsym $mod+Return exec alacritty 
-bindsym $mod+Shift+m exec strawberry 
 bindsym $mod+Shift+g exec ~/scripts/define.sh
 
 # Cycling to previously used workspace:
@@ -59,7 +56,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+q kill
 
 # toggle tiling / floating
-# bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -111,10 +108,7 @@ bindsym $mod+r mode "resize"
 # Script commands, programs:
 bindsym $mod+Shift+p exec flameshot gui 
 bindsym $mod+p exec ~/scripts/emoji.sh
-exec "xautolock -detectsleep -time 10 -locker \"i3lock -c '#000000'\""
 bindsym Control+Mod1+1 exec "i3lock -c '#000000'"
-bindsym $mod+Shift+w exec --no-startup-id ~/scripts/wallpaper_switcher.sh
-
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -136,23 +130,19 @@ mode "resize" {
 }
 
 # Set inner gaps between windows
-gaps inner 0
+gaps inner 4
 # Set outer gaps between the edge of the screen and windows
 gaps outer 0
 # Smart Gaps (Only gaps when you have =< 2 windows open in a single workspace)
-smart_gaps off 
+smart_gaps on
 
 # Window classes configuration:
-for_window [class="nsxiv"] floating enable
-for_window [class="nsxiv"] resize set 1000 700
-for_window [class="nsxiv"] move position center
-for_window [class=".*"] border normal
+default_border pixel 1
+default_floating_border pixel 1
 # hide_edge_borders smart
-default_border normal
-default_floating_border normal
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #285577 #285577 #ffffff #285577   #285577
+client.focused          #6a6a6a #6a6a6a #ffffff #6a6a6a   #6a6a6a
 client.focused_inactive #32302F  #32302F  #BDAE93  #32302F  #32302F
 client.unfocused        #282828  #282828  #A89984  #282828  #282828
 client.urgent           #ea6962 #ea6962 #1d2021 #ea6962   #ea6962
@@ -161,18 +151,13 @@ client.background       #ffffff
 
 # i3-status bar configuration:
 bar {
-    font pango:JetBrains Mono Nerd Font 9.5
     status_command i3status
-    tray_output primary
     position bottom 
-    separator_symbol "/"
+    font pango:JetBrainsMono Nerd Font 9.5
+    separator_symbol "|"
+    tray_padding 2
 }
 
 
 # Startup services:
-exec_always --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpapers/#0f0f0f.png &
-exec --no-startup-id dunst &
-exec --no-startup-id udiskie --tray &
-# exec_always --no-startup-id picom --experimental-backends &
-# exec_always ~/.config/polybar/launch.sh & 
-# exec --no-startup-id ibus-daemon -drx &
+exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/lain.png &

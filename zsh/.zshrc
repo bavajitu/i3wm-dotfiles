@@ -30,7 +30,7 @@ setopt prompt_subst
 
 # ---------- Oh My Zsh ----------
 plugins=(git zsh-autosuggestions)
-ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 source $ZSH/oh-my-zsh.sh
 
 
@@ -39,13 +39,13 @@ source ~/personal/opt/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
 # ---------- Aliases ----------
-alias v='nvim'
+alias nv='nvim'
 alias ls='ls --color=auto'
 alias ll='ls -lh --color=auto'
 alias ff='ranger'
 alias la='ls -lha --color=auto'
 
-alias cal='calcurse'
+alias ref='nvim ~/personal/docs/references.md'
 alias getmusic='./scripts/getmusic'
 alias code='cd ~/personal/programming/'
 alias cf='cd ~/personal/programming/codeforces/'
@@ -53,18 +53,17 @@ alias p='sudo pacman'
 
 
 # ---------- Keybindings ----------
-bindkey -s '^t' 'source /usr/local/bin/f\n'
+bindkey -s '^f' 'source /usr/local/bin/f\n'
 bindkey -s '^y' '~/scripts/youtube.sh\n'
 
 # ---------- Tmux-Sessionizer ----------
-bindkey -s ^f "tmux-sessionizer\n"
 bindkey -s '\eh' "tmux-sessionizer -s 0\n"
 bindkey -s '\et' "tmux-sessionizer -s 1\n"
 bindkey -s '\en' "tmux-sessionizer -s 2\n"
 bindkey -s '\es' "tmux-sessionizer -s 3\n"
 
 # ---------- Prompt ----------
-# PROMPT='[%~ ]$ '
+# PROMPT='%F{blue}%~%f $ '
 
 
 # ---------- Colors ----------
@@ -73,3 +72,10 @@ export LS_COLORS=$LS_COLORS:'di=34:fi=0:ln=36:pi=33:so=32:bd=34;46:cd=34;43:or=3
 
 # ---------- Completion ----------
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# ---------- Default Text editor ----------
+export EDITOR=nvim
+export VISUAL=nvim
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

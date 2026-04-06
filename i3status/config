@@ -12,12 +12,11 @@ general {
         output_format = "i3bar"
 }
 
-#order += "wireless _first_"
+# order += "wireless _first_"
 #order += "ethernet _first_"
 order += "volume master"
-# order += "cpu_usage"
-# order += "memory"
-#order += "wireless _first_"
+order += "cpu_usage"
+order += "memory"
 # order += "disk /"
 order += "battery 0"
 order += "tztime local"
@@ -44,7 +43,7 @@ battery 0 {
     last_full_capacity = true}
 
 disk "/" {
-        format = "DISK: %avail"
+        format = "Disk: %avail"
 }
 
 load {
@@ -58,12 +57,12 @@ cpu_usage {
 }
 
 memory {
-        format = "MEM: %used"
+        format = "RAM: %used"
         threshold_degraded = "1G"
-        format_degraded = "MEMORY < %available"
+        format_degraded = "RAM < %available"
 }
 
 tztime local {
-        format = "%d-%m %H:%M:%S (%A)"
+        format = "%d-%m %H:%M:%S %A"
 }
 
