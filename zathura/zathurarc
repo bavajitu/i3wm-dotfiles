@@ -45,8 +45,8 @@ set recolor-lightcolor "#2E3440"
 set recolor-darkcolor "#D8DEE9"
 
 # Fonts
-set font "IBM Plex Mono 11"
-set default-fallback-font "IBM Plex Mono 11"
+set font "IBM Plex Mono 10"
+set default-fallback-font "IBM Plex Mono 10"
 
 # Memory + text
 set use-less-memory false
@@ -57,4 +57,4 @@ set synctex true
 set synctex-editor-command "nvim --headless -c 'VimtexInverseSearch %l %f'"
 
 # External theme
-include plain-black 
+include mono 

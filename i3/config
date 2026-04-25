@@ -18,14 +18,13 @@ bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
 bindsym XF86MonBrightnessUp exec brightnessctl s 10%+
 
 # Applications shortcuts:
-bindsym $mod+Shift+Return exec librewolf 
-bindsym $mod+Return exec alacritty 
+bindsym $mod+Return exec kitty 
 bindsym $mod+Shift+g exec ~/scripts/define.sh
 
 # Cycling to previously used workspace:
 bindsym $mod+Tab workspace back_and_forth
 
-# bindsym $mod+d exec --no-startup-id dmenu_run  -fn 'FiraMono Nerd Font:size=11' -nb '#111111' -nf '#ffffff' -sb '#285577' -sf '#ffffff'
+# bindsym $mod+d exec --no-startup-id dmenu_run  -fn 'Liberation Mono:size=11' -nb '#111111' -nf '#ffffff' -sb '#285577' -sf '#ffffff'
 bindsym $mod+d exec --no-startup-id rofi -show drun
 
 # Changing focus between windows:
@@ -47,8 +46,6 @@ bindsym $mod+v split v
 # Window tiling configuration:
 focus_follows_mouse no
 mouse_warping none
-# Disable universal floating toggle
-for_window [class=".*"] floating disable 
 bindsym $mod+f fullscreen toggle
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
@@ -130,7 +127,7 @@ mode "resize" {
 }
 
 # Set inner gaps between windows
-gaps inner 4
+gaps inner 5
 # Set outer gaps between the edge of the screen and windows
 gaps outer 0
 # Smart Gaps (Only gaps when you have =< 2 windows open in a single workspace)
@@ -139,25 +136,38 @@ smart_gaps on
 # Window classes configuration:
 default_border pixel 1
 default_floating_border pixel 1
-# hide_edge_borders smart
+# hide_edge_borders smart 
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #6a6a6a #6a6a6a #ffffff #6a6a6a   #6a6a6a
-client.focused_inactive #32302F  #32302F  #BDAE93  #32302F  #32302F
-client.unfocused        #282828  #282828  #A89984  #282828  #282828
-client.urgent           #ea6962 #ea6962 #1d2021 #ea6962   #ea6962
+client.focused          #666666 #666666 #ffffff #666666   #666666
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
 client.background       #ffffff
 
 # i3-status bar configuration:
-bar {
-    status_command i3status
-    position bottom 
-    font pango:JetBrainsMono Nerd Font 9.5
-    separator_symbol "|"
-    tray_padding 2
-}
+#bar {
+#  status_command i3status
+#  position bottom 
+#  font pango:JetBrainsMono Nerd Font 9.5
+#  separator_symbol "|"
+#  tray_padding 2
+#  colors {
+#       background #0f0f0f
+#       statusline #c0c0c0
+#       separator  #505050
+#
+#       focused_workspace  #8ea59d #8ea59d #1e1e1e
+#       active_workspace   #0f0f0f #333333 #ffffff
+#       inactive_workspace #0f0f0f #0f0f0f #888888
+#       urgent_workspace   #2f343a #900000 #ffffff
+#   }
+#}
 
 
 # Startup services:
-exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/lain.png &
+exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/lanevo.png &
+exec_always --no-startup-id ~/.config/polybar/launch.sh &
+exec_always --no-startup-id picom --experimental-backends &

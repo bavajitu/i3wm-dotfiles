@@ -30,7 +30,8 @@ setopt prompt_subst
 
 # ---------- Oh My Zsh ----------
 plugins=(git zsh-autosuggestions)
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="robbyrussell"
 source $ZSH/oh-my-zsh.sh
 
 
@@ -40,8 +41,8 @@ source ~/personal/opt/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # ---------- Aliases ----------
 alias nv='nvim'
-alias ls='ls --color=auto'
-alias ll='ls -lh --color=auto'
+alias ls="eza --color=always --group-directories-first"
+alias ll="eza -l --icons --git"
 alias ff='ranger'
 alias la='ls -lha --color=auto'
 

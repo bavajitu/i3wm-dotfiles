@@ -1,3 +1,5 @@
+# Gruvbox Dark (hard) in RGBA for Zathura
+
 set default-bg                 rgba(29,32,33,1)
 set default-fg                 rgba(235,219,178,1)
 
@@ -33,7 +35,7 @@ set index-active-fg            rgba(235,219,178,1)
 set render-loading-bg          rgba(29,32,33,1)
 set render-loading-fg          rgba(235,219,178,1)
 
+# Proper Gruvbox highlight tones
 set highlight-color            rgba(215,153,33,0.35)
 set highlight-fg               rgba(29,32,33,0.9)
 set highlight-active-color     rgba(250,189,47,0.45)
-

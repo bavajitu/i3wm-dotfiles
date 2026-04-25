@@ -16,8 +16,8 @@ COOKIES="--cookies-from-browser firefox"
 SAFE_FLAGS="--sleep-interval 2 --max-sleep-interval 5 -N 1"
 
 show_usage() {
-  echo -e "${BOLD}getmusic - YouTube Music Downloader${NC}"
-  cat <<EOF
+    echo -e "${BOLD}getmusic - YouTube Music Downloader${NC}"
+    cat <<EOF
 
 USAGE:
   getmusic <mode> [options]
@@ -36,111 +36,110 @@ EOF
 }
 
 if [[ -z "$mode" || "$mode" == "-h" || "$mode" == "--help" ]]; then
-  show_usage
-  exit 0
+    show_usage
+    exit 0
 fi
 
 validate_url() {
-  local url="$1"
-  local uploader
-  uploader=$(yt-dlp $COOKIES --ignore-config --no-warnings --playlist-items 1 --print uploader "$url")
-  if [[ -z "$uploader" ]]; then
-    echo -e "${YELLOW}Error: did not find uploader${NC}"
-    exit 1
-  fi
-  echo "$uploader"
+    local url="$1"
+    local uploader
+    uploader=$(yt-dlp $COOKIES --ignore-config --no-warnings --playlist-items 1 --print uploader "$url")
+    if [[ -z "$uploader" ]]; then
+        echo -e "${YELLOW}Error: did not find uploader${NC}"
+        exit 1
+    fi
+    echo "$uploader"
 }
 
 case "$mode" in
 "artist")
-  submode="$2"
-  URL="$3"
+    submode="$2"
+    URL="$3"
 
-  mkdir -p "$(dirname "$artists_file")"
-  touch "$artists_file"
+    mkdir -p "$(dirname "$artists_file")"
+    touch "$artists_file"
 
-  case "$submode" in
-  "list")
-    index=1
-    while IFS="," read -r artist url; do
-      echo -e " $index | ${PURPLE}$artist${NC} | $url"
-      ((index++))
-    done <"$artists_file"
+    case "$submode" in
+    "list")
+        index=1
+        while IFS="," read -r artist url; do
+            echo -e " $index | ${PURPLE}$artist${NC} | $url"
+            ((index++))
+        done <"$artists_file"
+        ;;
+
+    "add")
+        uploader=$(validate_url "$URL")
+
+        if yt-dlp $COOKIES --flat-playlist --playlist-items 1 "$URL/releases" >/dev/null 2>&1; then
+            :
+        else
+            echo -e "${YELLOW}This channel has no releases tab.${NC}"
+            exit 1
+        fi
+
+        if grep -Fq "${URL}/releases" "$artists_file"; then
+            echo -e "${YELLOW}URL already registered.${NC}"
+            exit 1
+        fi
+
+        echo "$uploader","${URL}/releases" >>"$artists_file"
+        echo -e "${GREEN}'$uploader' added.${NC}"
+        ;;
+
+    "remove")
+        index="$3"
+
+        if ! [[ "$index" =~ ^[0-9]+$ ]]; then
+            echo -e "${YELLOW}Input is not an integer.${NC}"
+            exit 1
+        fi
+
+        line_count=$(wc -l <"$artists_file")
+        if ((index < 1 || index > line_count)); then
+            echo -e "${YELLOW}Index out of range.${NC}"
+            exit 1
+        fi
+
+        sed -i "${index}d" "$artists_file"
+        echo "Removed artist #$index"
+        ;;
+
+    "update")
+        while IFS="," read -r name url; do
+            echo "Updating $name"
+            yt-dlp $COOKIES $SAFE_FLAGS \
+                -x --audio-format flac "$url" \
+                -o "$HOME/Music/$name/%(album,playlist_title)s/%(track_number,playlist_index)02d - %(title)s.%(ext)s"
+        done <"$artists_file"
+        ;;
+    *)
+        echo -e "${YELLOW}Invalid artist option.${NC}"
+        ;;
+    esac
     ;;
-
-  "add")
-    uploader=$(validate_url "$URL")
-
-    if yt-dlp $COOKIES --flat-playlist --playlist-items 1 "$URL/releases" >/dev/null 2>&1; then
-      :
-    else
-      echo -e "${YELLOW}This channel has no releases tab.${NC}"
-      exit 1
-    fi
-
-    if grep -Fq "${URL}/releases" "$artists_file"; then
-      echo -e "${YELLOW}URL already registered.${NC}"
-      exit 1
-    fi
-
-    echo "$uploader","${URL}/releases" >>"$artists_file"
-    echo -e "${GREEN}'$uploader' added.${NC}"
-    ;;
-
-  "remove")
-    index="$3"
-
-    if ! [[ "$index" =~ ^[0-9]+$ ]]; then
-      echo -e "${YELLOW}Input is not an integer.${NC}"
-      exit 1
-    fi
-
-    line_count=$(wc -l <"$artists_file")
-    if ((index < 1 || index > line_count)); then
-      echo -e "${YELLOW}Index out of range.${NC}"
-      exit 1
-    fi
-
-    sed -i "${index}d" "$artists_file"
-    echo "Removed artist #$index"
-    ;;
-
-  "update")
-    while IFS="," read -r name url; do
-      echo "Updating $name"
-      yt-dlp $COOKIES $SAFE_FLAGS \
-        -x --audio-format opus --audio-quality 0 \
-        "$url" \
-        -o "$HOME/Music/$name/%(album,playlist_title)s/%(track_number,playlist_index)02d - %(title)s.%(ext)s"
-    done <"$artists_file"
-    ;;
-  *)
-    echo -e "${YELLOW}Invalid artist option.${NC}"
-    ;;
-  esac
-  ;;
 
 "album" | "single" | "playlist")
-  URL="$2"
-  uploader=$(validate_url "$URL")
+    URL="$2"
+    uploader=$(validate_url "$URL")
 
-  yt-dlp $COOKIES $SAFE_FLAGS \
-    -x --audio-format opus --audio-quality 0 \
-    "$URL" \
-    -o "$HOME/Music/$uploader/%(album,playlist_title)s/%(track_number,playlist_index)02d - %(title)s.%(ext)s"
-  ;;
+    yt-dlp $COOKIES $SAFE_FLAGS \
+        -x --audio-format flac \
+        "$URL" \
+        -o "$HOME/Music/$uploader/%(album,playlist_title)s/%(track_number,playlist_index)02d - %(title)s.%(ext)s"
+    ;;
 
 "song")
-  URL="$2"
-  uploader=$(validate_url "$URL")
+    URL="$2"
+    uploader=$(validate_url "$URL")
 
-  yt-dlp $COOKIES $SAFE_FLAGS \
-    -x --audio-format opus --audio-quality 0 \
-    "$URL" \
-    -o "$HOME/Music/$uploader/Singles/%(title)s.%(ext)s"
-  ;;
+    yt-dlp $COOKIES $SAFE_FLAGS \
+        -x --audio-format flac --audio-quality 0 \
+        "$URL" \
+        -o "$HOME/Music/$uploader/Singles/%(title)s.%(ext)s"
+    ;;
 
 *)
-  echo -e "${YELLOW}Invalid option.${NC}"
-  ;;
+    echo -e "${YELLOW}Invalid option.${NC}"
+    ;;
 esac
